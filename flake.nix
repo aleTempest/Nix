@@ -3,6 +3,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
 
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
+
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -13,6 +15,7 @@
     self,
     nixpkgs,
     home-manager,
+    nix-flatpak,
     ...
     } @ inputs: let
       inherit (self) outputs;
@@ -21,6 +24,7 @@
         ale = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs outputs;};
           modules = [
+            nix-flatpak.nixosModules.nix-flatpak
             ./nixos/configuration.nix
           ];
         };

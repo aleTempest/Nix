@@ -48,6 +48,11 @@ pkgs,
     nix-search-cli
     duckstation
     btop
+    brave
+    prismlauncher
+    nerdfonts
+    neovim
+    noto-fonts-cjk-sans
   ];
 
   home.file.".config/wezterm/wezterm.lua".text = builtins.readFile ./wezterm.lua;
