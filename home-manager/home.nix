@@ -1,5 +1,3 @@
-# This is your home-manager configuration file
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
 inputs,
 lib,
@@ -10,6 +8,7 @@ pkgs,
   imports = [
     inputs.nix-colors.homeManagerModule
     ./alacritty.nix
+    ./tmux.nix
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.onedark;
