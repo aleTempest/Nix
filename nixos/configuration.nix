@@ -77,5 +77,11 @@
     ];
   };
 
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" "Iosevka" ]; })
+    source-han-sans-japanese
+    source-han-serif-japanese
+  ];
+
   system.stateVersion = "24.11";
 }

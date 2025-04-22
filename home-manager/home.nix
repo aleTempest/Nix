@@ -1,9 +1,9 @@
 {
-inputs,
-lib,
-config,
-pkgs,
-...
+  inputs,
+  lib,
+  config,
+  pkgs,
+  ...
 }: {
   imports = [
     inputs.nix-colors.homeManagerModule
@@ -49,9 +49,7 @@ pkgs,
     btop
     brave
     prismlauncher
-    nerdfonts
     neovim
-    noto-fonts-cjk-sans
   ];
 
   home.file.".config/wezterm/wezterm.lua".text = builtins.readFile ./wezterm.lua;
