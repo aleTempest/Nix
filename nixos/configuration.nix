@@ -17,8 +17,13 @@
   boot.supportedFilesystems = [ "ntfs" ];
 
   networking.hostName = "ela";
-  # networking.wireless.enable = true;
-  networking.networkmanager.enable = true;
+  networking.wireless.enable = true;
+  networking.wireless.networks = {
+    INFINITUM9CFF = {
+      psk = "hyUKUnANB6";
+    };
+  };
+  # networking.networkmanager.enable = true;
 
   time.timeZone = "America/Monterrey";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -37,10 +42,13 @@
   # Activar flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Entorno de escritorio
-  services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  # KDE
+  # services.xserver.enable = true;
+  # services.displayManager.sddm.enable = true;
+  # services.desktopManager.plasma6.enable = true;
+
+  # TTY
+  services.getty.autologinUser = "ale";
 
   services.xserver.xkb = {
     layout = "latam";
@@ -81,6 +89,9 @@
     (nerdfonts.override { fonts = [ "FiraCode" "Iosevka" ]; })
     source-han-sans-japanese
     source-han-serif-japanese
+    font-awesome
+    corefonts
+    vistafonts
   ];
 
   system.stateVersion = "24.11";

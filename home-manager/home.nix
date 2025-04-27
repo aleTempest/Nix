@@ -9,6 +9,9 @@
     inputs.nix-colors.homeManagerModule
     ./alacritty.nix
     ./tmux.nix
+    ./hypr.nix
+    ./waybar.nix
+    ./wofi.nix
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.onedark;
@@ -31,6 +34,7 @@
       nd = "nix develop";
       nr = "nix run";
       vi = "nix run ~/flakes/nixvim";
+      bashtop = "~/ela/derivations/bashtop/bashtop/bashtop";
     };
   };
 
@@ -50,6 +54,7 @@
     brave
     prismlauncher
     neovim
+    qbittorrent
   ];
 
   home.file.".config/wezterm/wezterm.lua".text = builtins.readFile ./wezterm.lua;
