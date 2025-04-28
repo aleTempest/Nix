@@ -18,7 +18,7 @@
           x = 12;
           y = 12;
         };
-        opacity = 1;
+        opacity = 0.9;
       };
 
       terminal.shell = "fish";

@@ -1,16 +1,21 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
   gtk = {
     enable = true;
+    theme = {
+      package = pkgs.fluent-gtk-theme;
+      name = "Fluent-Dark";
+    };
 
-    theme.package = pkgs.adw-gtk3;
-    theme.name = "adw-gtk3";
+    iconTheme = {
+      package = pkgs.fluent-icon-theme;
+      name = "Fluent-dark";
+    };
 
-    iconTheme.package = pkgs.gnome.adwaita-icon-theme;
-    iconTheme.name = "Adwaita";
-
-    cursorTheme.package = pkgs.bibata-cursors;
-    cursorTheme.name = "Bibata-Modern-Ice";
+    font = {
+      name = "Sans";
+      size = 11;
+    };
   };
 
   home.pointerCursor = {
@@ -19,7 +24,6 @@
 
     name = "Bibata-Modern-Ice";
     package = pkgs.bibata-cursors;
+    size = 16;
   };
-
-
 }

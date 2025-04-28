@@ -4,7 +4,11 @@
   config,
   pkgs,
   ...
-}: {
+}: 
+let
+  system = "x86_64-linux";
+in
+{
   imports = [
     inputs.nix-colors.homeManagerModule
     ./alacritty.nix
@@ -12,6 +16,7 @@
     ./hypr.nix
     ./waybar.nix
     ./wofi.nix
+    ./theme.nix
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.onedark;
@@ -39,25 +44,32 @@
   };
 
   home.packages = with pkgs; [ 
-    wezterm
     spotify
     eza
     wl-clipboard
     mpv
-    iosevka-comfy.comfy
     grc
     vscode
     tauon
     nix-search-cli
     duckstation
     btop
-    brave
+    # brave
     prismlauncher
-    neovim
     qbittorrent
-  ];
+    unzip
+    zip
+    brightnessctl
+    pavucontrol
+    inputs.zen-browser.packages."${system}".beta
+    bluez-tools
 
-  home.file.".config/wezterm/wezterm.lua".text = builtins.readFile ./wezterm.lua;
+    cinnamon.nemo-with-extensions
+    xfce.thunar
+    xfce.thunar-archive-plugin
+    xfce.thunar-volman
+    xfce.thunar-media-tags-plugin
+  ];
 
   programs.home-manager.enable = true;
 

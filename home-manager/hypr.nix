@@ -17,6 +17,7 @@ let
     '';
   
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
+    hyprctl setcursor Bibata-Modern-Ice 16 & 
     ${pkgs.waybar}/bin/waybar & 
     sleep 1
     ${pkgs.waypaper}/bin/waypaper --restore &
@@ -50,7 +51,6 @@ in
       dwindle = {
         pseudotile = "yes";
         preserve_split = "yes";
-        # no_gaps_when_only = 1; # equivalente a smart gaps
       };
 
       input = {
@@ -76,16 +76,22 @@ in
         gaps_in = 5;
         gaps_out = 5;
         "col.inactive_border" = "rgba(${config.colorScheme.palette.base00}ee)";
-        "col.active_border" = "rgba(${config.colorScheme.palette.base0A}ee)";
-        border_size = 2;
+        "col.active_border" = "rgba(${config.colorScheme.palette.base0D}ee)";
+        border_size = 3;
       };
 
       decoration = {
           rounding = 2;
           blur = {
               enabled = true;
-              size = 10;
+              size = 3;
               passes = 1;
+          };
+          shadow = {
+            enabled = false;
+            range = 4;
+            render_power = 3;
+            color = "rgba(1a1a1aee)";
           };
       };
 
@@ -173,10 +179,20 @@ in
     };
 
     extraConfig = ''
-      monitor=HDMI-A-1,preferred,0x0,auto
-      monitor=eDP-1,disable
-      # monitor=eDP-1,1920x1080,1920x500,1.25
+      monitor=HDMI-A-1,preferred,1536x0,auto
+      monitor=eDP-1,1920x1080,0x370,1.25
       bind = ,Print, exec, grim -g "$(slurp)" - | swappy -f - 
+
+      # smart gaps, por alguna razón quitaron `no_gaps_when_only` de dwindle
+      workspace = w[t1], gapsout:0, gapsin:0
+      workspace = w[tg1], gapsout:0, gapsin:0
+      workspace = f[1], gapsout:0, gapsin:0
+      windowrulev2 = bordersize 0, floating:0, onworkspace:w[t1]
+      windowrulev2 = rounding 0, floating:0, onworkspace:w[t1]
+      windowrulev2 = bordersize 0, floating:0, onworkspace:w[tg1]
+      windowrulev2 = rounding 0, floating:0, onworkspace:w[tg1]
+      windowrulev2 = bordersize 0, floating:0, onworkspace:f[1]
+      windowrulev2 = rounding 0, floating:0, onworkspace:f[1]
     '';
 
   };

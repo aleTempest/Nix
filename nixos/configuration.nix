@@ -22,6 +22,9 @@
     INFINITUM9CFF = {
       psk = "hyUKUnANB6";
     };
+    INFINITUM9CFF_EXT = {
+      psk = "hyUKUnANB6";
+    };
   };
   # networking.networkmanager.enable = true;
 
@@ -93,6 +96,8 @@
     corefonts
     vistafonts
   ];
+
+  programs.dconf.enable = true;
 
   system.stateVersion = "24.11";
 }

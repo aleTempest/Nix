@@ -9,81 +9,89 @@
     enable = true;
 
     style = with config.colorScheme.palette; ''
-      * {
-        font-family: Rubik;
-        font-size: 13px;
-        border-radius: 7px;
-      }
+        * {
+          font-family: Rubik;
+          font-size: 13px;
+          min-height: 0;
+        }
       
-      .modules-right,
-      .modules-center,
-      .modules-left {
-        color: #${base07};
-        background: #${base00};
-        margin: 5px;
-        padding: 5px;
-      }
+        window#waybar {
+          background: #${base00};
+        }
       
-      window#waybar {
-        background: transparent;
-      }
+        .modules-right,
+        .modules-center,
+        .modules-left {
+          color: #${base07};
+          background: #${base00};
+          margin: 5px;
+        }
       
-      .modules-right * {
-        margin-left: 10px;
-      }
+        .modules-right * {
+          margin-left: 10px;
+        }
       
-      #workspaces button {
-        margin: 5px;
-        padding: 0;
-        border-radius: 0;
-        background: transparent;
-        color: #${base07};
-      }
-
-      #custom-menu {
-        color: #${base08};
-        margin-right: 10px;
-      }
+        /* Workspaces */
+        #workspaces button {
+          margin: 5px;
+          border-radius: 0;
+          background: transparent;
+          color: #${base07};
+        }
       
-      #workspaces button.focused {
-        color: #${base0A};
-      }
+        #workspaces button.focused,
+        #workspaces button.active {
+          color: #${base0A};
+        }
       
-      #workspaces button.active {
-        color: #${base0A};
-      }
+        /* Module containers */
+        #workspaces,
+        #clock,
+        #pulseaudio,
+        #battery,
+        #network {
+          background: #${base02};
+          border-radius: 10px;
+          padding: 3px;
+        }
       
-      #mode {
-        margin-left: 30px;
-      }
+        /* Individual modules */
+        #custom-menu {
+          color: #${base08};
+          margin-right: 10px;
+        }
       
-      #network {
-        color: #${base0E};
-      }
+        #network {
+          color: #${base0E};
+        }
       
-      #pulseaudio {
-        color: #${base0D};
-      }
+        #pulseaudio {
+          color: #${base0D};
+        }
       
-      #battery {
-        color: #${base0C};
-      }
+        #battery {
+          color: #${base0C};
+        }
       
-      #clock {
-        color: #${base0A};
-      }
+        #clock {
+          color: #${base0A};
+        }
       
-      #window {
-        color: #${base09};
-        margin-left: 15px;
-      }
+        #window {
+          color: #${base09};
+          margin-left: 15px;
+        }
+      
+        #mode {
+          margin-left: 30px;
+        }
     '';
 
     settings = {
       mainBar = {
         layer = "top";
         position = "top";
-        height = 20;
+        height = 10;
 
         output = [
           "eDP-1"
@@ -178,7 +186,7 @@
         }; # pulseaudio
 
         clock = {
-          format = "{:%a, %d. %b  %H:%M}  ";
+          format = "{:%a, %d. %b  %H:%M}";
         }; # clock
       }; # mainbar
     }; # settings
