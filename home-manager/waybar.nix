@@ -14,77 +14,115 @@
           font-size: 13px;
           min-height: 0;
         }
-      
+
         window#waybar {
           background: #${base00};
         }
-      
+
+        #workspaces button {
+            padding: 0 10px;
+            background-color: transparent;
+            color: #${base07};
+            margin: 0;
+        }
+        
+        #workspaces button:hover {
+            background: #${base0A};
+            color: #${base00};
+            box-shadow: inherit;
+        }
+        
+        /*#workspaces button.focused {
+            background: #${base09};
+            color: #${base08};
+        }*/
+
+        #workspaces button.active {
+            font-weight: 400;
+            background: #${base09};
+            color: #${base01};
+        }
+        
+        #workspaces button.urgent {
+            background-color: #${base0F};
+            color: #${base01};
+        }
+     
         .modules-right,
         .modules-center,
         .modules-left {
-          color: #${base07};
           background: #${base00};
-          margin: 5px;
+          padding: 5px;
         }
-      
-        .modules-right * {
-          margin-left: 10px;
-        }
-      
-        /* Workspaces */
-        #workspaces button {
-          margin: 5px;
-          border-radius: 0;
-          background: transparent;
-          color: #${base07};
-        }
-      
-        #workspaces button.focused,
-        #workspaces button.active {
-          color: #${base0A};
-        }
-      
-        /* Module containers */
-        #workspaces,
+
         #clock,
-        #pulseaudio,
+        #cpu,
+        #memory,
+        #temperature,
         #battery,
-        #network {
-          background: #${base02};
-          border-radius: 10px;
-          padding: 3px;
+        #network,
+        #pulseaudio,
+        #disk,
+        #tray {
+          margin-left: 8px;
         }
-      
-        /* Individual modules */
-        #custom-menu {
-          color: #${base08};
-          margin-right: 10px;
-        }
-      
-        #network {
-          color: #${base0E};
-        }
-      
-        #pulseaudio {
-          color: #${base0D};
-        }
-      
-        #battery {
-          color: #${base0C};
-        }
-      
+
         #clock {
-          color: #${base0A};
+            color: #${base0D};
+            border-bottom: 1px solid #${base0D};
         }
-      
-        #window {
-          color: #${base09};
-          margin-left: 15px;
+        
+        #cpu {
+            color: #${base0C};
+            border-bottom: 1px solid #${base0C};
         }
-      
-        #mode {
-          margin-left: 30px;
+        
+        #memory {
+            color: #${base0B};
+            border-bottom: 1px solid #${base0B};
         }
+        
+        #temperature {
+            color: #${base0A};
+            border-bottom: 1px solid #${base0A};
+        }
+
+        #battery {
+            color: #48b0bd;
+            border-bottom: 1px solid #48b0bd;
+        }
+        
+        #network {
+            color: #e86671;
+            border-bottom: 1px solid #e86671;
+        }
+        
+        #pulseaudio {
+            color: #c678dd;
+            border-bottom: 1px solid #c678dd;
+        }
+        
+        #disk {
+            color: #${base06};
+            border-bottom: 1px solid #${base06};
+        }
+
+        #tray {
+            background-color: transparent;
+            padding: 0 10px;
+            margin: 0 2px;
+        }
+        
+        #tray > .passive {
+            -gtk-icon-effect: dim;
+        }
+        
+        #tray > .needs-attention {
+            -gtk-icon-effect: highlight;
+            color: @red;
+            border-bottom: 1px solid @red;
+        }
+
     '';
 
     settings = {
@@ -99,8 +137,13 @@
         ];
 
         modules-left = [ "custom/menu" "hyprland/workspaces" ];
-        modules-center = [ "clock" ];
-        modules-right = [ "pulseaudio" "battery" "network" "tray" ];
+        modules-center = [ ];
+        modules-right = [ "clock" "cpu" "memory" "temperature" "disk" "pulseaudio" "battery" "network" "tray" "custom/ela" ];
+
+        "custom/ela" = {
+          format = "ela";
+          tooltip = false;
+        };
 
         "custom/menu" = {
           format = "";
@@ -131,12 +174,30 @@
             "9" = "9";
             "10" = "10";
           };
-        }; # workspaces
+        };
+
+        cpu = {
+          format = "󰘚 {usage}%";
+          tooltip = true;
+          interval = 1;
+          on-click = "alacritty -e btop";
+        };
+      
+        memory = {
+          format = "󰍛 {}%";
+          interval = 1;
+          on-click = "alacritty -e btop";
+        };
+      
+        temperature = {
+          format = "{icon} {temperatureC}°C";
+          format-icons = ["󱃃" "󰔏" "󱃂"];
+        };
 
         tray = {
           spacing = 0;
           icon-size = 20;
-        }; # tray
+        };
 
         battery = {
           states = {
@@ -152,7 +213,7 @@
             " "
           ];
           tooltip-format = "{capacity}% - {timeTo}";
-        }; # battery
+        };
 
         network = {
           format-wifi = "{essid}  ";
@@ -183,11 +244,18 @@
           on-click = "pavucontrol";
           on-click-middle = "amixer set Master toggle";
           tooltip = false;
-        }; # pulseaudio
+        };
+
+        disk = {
+          interval = 30;
+          format = "󰋊 {percentage_used}%";
+          path = "/home";
+        };
 
         clock = {
           format = "{:%a, %d. %b  %H:%M}";
-        }; # clock
+        };
+
       }; # mainbar
     }; # settings
   };
