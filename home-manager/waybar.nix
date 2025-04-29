@@ -1,4 +1,16 @@
 { pkgs, config, ... }:
+let
+  bluetooth = pkgs.pkgs.writeShellScriptBin "bluetooth" ''
+      DEVICE_MAC="98:34:8C:D3:E8:AB"
+      connected=$(bluetoothctl info "$DEVICE_MAC" | grep -i "connected: yes")
+      
+      if [ -n "$connected" ]; then
+          bluetoothctl disconnect "$DEVICE_MAC"
+      else
+          bluetoothctl connect "$DEVICE_MAC"
+      fi
+  '';
+in
 {
   home.packages = with pkgs; [
     waybar
@@ -159,7 +171,8 @@
 
         "hyprland/workspaces" = {
           disable-scroll = false;
-          all-outputs = false;
+          active-only = false;
+          all-outputs = true;
           warp-on-scroll = false;
           format = "{icon}";
           format-icons = {
@@ -173,6 +186,10 @@
             "8" = "8";
             "9" = "9";
             "10" = "10";
+          };
+          persistent-workspaces = {
+            "HDMI-A-1" = [ 1 2 3 4 5 6 7 8 ];
+            "eDP-1" = [ 9 10 ];
           };
         };
 
@@ -242,7 +259,7 @@
           };
           scroll-step = 1;
           on-click = "pavucontrol";
-          on-click-middle = "amixer set Master toggle";
+          on-click-middle = "${bluetooth}/bin/bluetooth";
           tooltip = false;
         };
 

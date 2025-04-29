@@ -86,12 +86,23 @@
   };
 
   fonts.packages = with pkgs; [
+    # goated
     (nerdfonts.override { fonts = [ "FiraCode" "Iosevka" ]; })
+
+    # Fuentes para japonés, chino
     source-han-sans-japanese
     source-han-serif-japanese
+    noto-fonts-cjk-sans
+
+    # íconos
     font-awesome
+    
+    # Fuentes de microsoft
     corefonts
     vistafonts
+
+    # emojis
+    noto-fonts-emoji
   ];
 
   programs.dconf.enable = true;

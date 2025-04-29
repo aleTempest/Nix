@@ -84,8 +84,11 @@ in
           rounding = 2;
           blur = {
               enabled = true;
-              size = 3;
-              passes = 1;
+              size = 4;
+              passes = 2;
+          # noise = 0.1;
+              vibrancy = 0.3;
+              new_optimizations = true;
           };
           shadow = {
             enabled = false;
@@ -179,9 +182,12 @@ in
     };
 
     extraConfig = ''
-      monitor=HDMI-A-1,preferred,1536x0,auto
-      monitor=eDP-1,1920x1080,0x370,1.25
+      monitor=HDMI-A-1,preferred,1920x0,auto
+      monitor=eDP-1,1920x1080,0x370,1
       bind = ,Print, exec, grim -g "$(slurp)" - | swappy -f - 
+
+      workspace = 9,monitor:eDP-1
+      workspace = 10,monitor:eDP-1
 
       # smart gaps, por alguna razón quitaron `no_gaps_when_only` de dwindle
       workspace = w[t1], gapsout:0, gapsin:0
