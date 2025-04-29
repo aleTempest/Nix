@@ -22,9 +22,6 @@
     INFINITUM9CFF = {
       psk = "hyUKUnANB6";
     };
-    INFINITUM9CFF_EXT = {
-      psk = "hyUKUnANB6";
-    };
   };
   # networking.networkmanager.enable = true;
 

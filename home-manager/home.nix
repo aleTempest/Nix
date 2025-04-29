@@ -39,7 +39,7 @@ in
       nd = "nix develop";
       nr = "nix run";
       vi = "nix run ~/flakes/nixvim";
-      bashtop = "~/ela/derivations/bashtop/bashtop/bashtop";
+      home = "cd ~/ela && vi";
     };
   };
 
@@ -48,6 +48,7 @@ in
     eza
     wl-clipboard
     mpv
+    feh
     grc
     vscode
     tauon
@@ -63,6 +64,7 @@ in
     pavucontrol
     inputs.zen-browser.packages."${system}".beta
     bluez-tools
+    chromium
 
     cinnamon.nemo-with-extensions
     xfce.thunar
