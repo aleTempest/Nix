@@ -10,6 +10,24 @@
 
     nix-colors.url = "github:misterio77/nix-colors";
 
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland";
+
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+
+    hyprlock = {
+      url = "github:hyprwm/hyprlock/";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hypridle = {
+      url = "github:hyprwm/hypridle/";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprcursor-phinger.url = "github:jappie3/hyprcursor-phinger";
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };

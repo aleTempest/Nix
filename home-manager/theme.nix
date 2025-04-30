@@ -17,13 +17,4 @@
       size = 11;
     };
   };
-
-  home.pointerCursor = {
-    x11.enable = true;
-    gtk.enable = false;
-
-    name = "Bibata-Modern-Ice";
-    package = pkgs.bibata-cursors;
-    size = 16;
-  };
 }

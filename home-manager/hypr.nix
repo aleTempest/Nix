@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }:
+{ 
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ... 
+}:
 let
   zenMode = pkgs.pkgs.writeShellScriptBin "zen_mode" ''
     if pgrep waybar; then
@@ -24,6 +30,20 @@ let
   '';
 in
 {
+  imports = [
+    inputs.hyprcursor-phinger.homeManagerModules.hyprcursor-phinger
+  ];
+
+  home.pointerCursor = {
+    name = "phinger-cursors-dark";
+    package = pkgs.phinger-cursors;
+    size = 24;
+    gtk.enable = true;
+    x11.enable = true;
+  };
+
+  programs.hyprcursor-phinger.enable = true;
+
   home.packages = with pkgs; [
     wofi
     rofi-wayland
@@ -42,8 +62,36 @@ in
     enable = true;
     xwayland.enable = true;
 
+    extraConfig = ''
+      bind = ,Print, exec, grim -g "$(slurp)" - | swappy -f - 
+    '';
+
     settings = {
       env = "XCURSOR_SIZE, 24";
+
+      monitor = [
+        "HDMI-A-1,preferred,1920x0,auto"
+        "eDP-1,1920x1080,0x370,1"
+      ];
+
+      workspace = [
+        "9,monitor:eDP-1"
+        "10,monitor:eDP-1"
+
+        # smart gaps, por alguna razón quitaron `no_gaps_when_only` de dwindle
+        "w[t1], gapsout:0, gapsin:0"
+        "w[tg1], gapsout:0, gapsin:0"
+        "f[1], gapsout:0, gapsin:0"
+      ];
+
+      windowrulev2 = [
+        "bordersize 0, floating:0, onworkspace:w[t1]"
+        "rounding 0, floating:0, onworkspace:w[t1]"
+        "bordersize 0, floating:0, onworkspace:w[tg1]"
+        "rounding 0, floating:0, onworkspace:w[tg1]"
+        "bordersize 0, floating:0, onworkspace:f[1]"
+        "rounding 0, floating:0, onworkspace:f[1]"
+      ];
 
       exec-once = ''${startupScript}/bin/start'';
 
@@ -73,29 +121,32 @@ in
       };
 
       general = {
-        gaps_in = 5;
-        gaps_out = 5;
-        "col.inactive_border" = "rgba(${config.colorScheme.palette.base00}ee)";
-        "col.active_border" = "rgba(${config.colorScheme.palette.base0D}ee)";
+        gaps_in = 8;
+        gaps_out = 10;
         border_size = 3;
+        "col.inactive_border" = "rgba(00000000)";
+        "col.active_border" = "rgba(${config.colorScheme.palette.base07}ee)";
       };
 
       decoration = {
-          rounding = 2;
-          blur = {
-              enabled = true;
-              size = 4;
-              passes = 2;
-          # noise = 0.1;
-              vibrancy = 0.3;
-              new_optimizations = true;
-          };
-          shadow = {
-            enabled = false;
-            range = 4;
-            render_power = 3;
-            color = "rgba(1a1a1aee)";
-          };
+        rounding = 8;
+        active_opacity = 0.9;
+        inactive_opacity = 0.7;
+        shadow = {
+          enabled = true;
+          range = 6;
+          render_power = 2;
+          color = "0x44000000";
+        };
+        blur = {
+          enabled = true;
+          size = 12;
+          new_optimizations = true;
+          ignore_opacity = true;
+          passes = 3;
+          popups = true;
+          xray = true;
+        };
       };
 
       animations = {
@@ -180,27 +231,5 @@ in
             10)
         );
     };
-
-    extraConfig = ''
-      monitor=HDMI-A-1,preferred,1920x0,auto
-      monitor=eDP-1,1920x1080,0x370,1
-      bind = ,Print, exec, grim -g "$(slurp)" - | swappy -f - 
-
-      workspace = 9,monitor:eDP-1
-      workspace = 10,monitor:eDP-1
-
-      # smart gaps, por alguna razón quitaron `no_gaps_when_only` de dwindle
-      workspace = w[t1], gapsout:0, gapsin:0
-      workspace = w[tg1], gapsout:0, gapsin:0
-      workspace = f[1], gapsout:0, gapsin:0
-      windowrulev2 = bordersize 0, floating:0, onworkspace:w[t1]
-      windowrulev2 = rounding 0, floating:0, onworkspace:w[t1]
-      windowrulev2 = bordersize 0, floating:0, onworkspace:w[tg1]
-      windowrulev2 = rounding 0, floating:0, onworkspace:w[tg1]
-      windowrulev2 = bordersize 0, floating:0, onworkspace:f[1]
-      windowrulev2 = rounding 0, floating:0, onworkspace:f[1]
-    '';
-
   };
-
 }
