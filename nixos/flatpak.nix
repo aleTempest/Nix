@@ -15,7 +15,6 @@ pkgs,
   };
 
   services.flatpak.packages = [
-    { appId = "com.brave.Browser"; origin = "flathub";  }
     { appId = "com.obsproject.Studio"; origin = "flathub"; }
     { appId = "com.discordapp.Discord"; origin = "flathub"; }
     { appId = "com.valvesoftware.Steam"; origin = "flathub"; }

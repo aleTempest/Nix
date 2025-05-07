@@ -7,6 +7,7 @@
       ./flatpak.nix
       ./shell.nix
       ./kdeconnect.nix
+      ./syncthing.nix
     ];
 
   boot.loader.grub = {

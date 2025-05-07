@@ -84,6 +84,14 @@ in
         "f[1], gapsout:0, gapsin:0"
       ];
 
+      windowrule = [
+        "noblur,tittle:Picture in Picture"
+        "noshadow,class:Chromium-browser"
+        "noblur,class:Chromium-browser"
+        "noblur,class:Xdg-desktop-portal-gtk"
+        "noshadow,class:Xdg-desktop-portal-gtk"
+      ];
+
       windowrulev2 = [
         "bordersize 0, floating:0, onworkspace:w[t1]"
         "rounding 0, floating:0, onworkspace:w[t1]"
@@ -121,15 +129,15 @@ in
       };
 
       general = {
-        gaps_in = 8;
-        gaps_out = 10;
+        gaps_in = 0;
+        gaps_out = 0;
         border_size = 3;
         "col.inactive_border" = "rgba(00000000)";
         "col.active_border" = "rgba(${config.colorScheme.palette.base07}ee)";
       };
 
       decoration = {
-        rounding = 8;
+        rounding = 0;
         active_opacity = 0.9;
         inactive_opacity = 0.7;
         shadow = {

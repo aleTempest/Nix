@@ -17,9 +17,10 @@ in
     ./waybar.nix
     ./wofi.nix
     ./theme.nix
+    ./lf.nix
   ];
 
-  colorScheme = inputs.nix-colors.colorSchemes.onedark;
+  colorScheme = inputs.nix-colors.colorSchemes.oxocarbon-dark;
 
   nixpkgs = {
     overlays = [ ];
@@ -55,7 +56,7 @@ in
     nix-search-cli
     duckstation
     btop
-    # brave
+    brave
     prismlauncher
     qbittorrent
     unzip

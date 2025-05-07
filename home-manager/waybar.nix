@@ -67,6 +67,11 @@ in
           padding: 5px;
         }
 
+        #window {
+          color: #${base06};
+          padding-left: 5px;
+        }
+
         #clock,
         #cpu,
         #memory,
@@ -80,11 +85,11 @@ in
         }
 
         #clock {
-            color: #${base0D};
-            border-bottom: 1px solid #${base0D};
+            color: #${base09};
+            border-bottom: 1px solid #${base09};
         }
         
-        #cpu {
+        /*#cpu {
             color: #${base0C};
             border-bottom: 1px solid #${base0C};
         }
@@ -97,27 +102,28 @@ in
         #temperature {
             color: #${base0A};
             border-bottom: 1px solid #${base0A};
-        }
+        }*/
 
+        /* TODO: estados */
         #battery {
-            color: #48b0bd;
-            border-bottom: 1px solid #48b0bd;
+            color: #${base0C};
+            border-bottom: 1px solid #${base0C};
         }
         
         #network {
-            color: #e86671;
-            border-bottom: 1px solid #e86671;
+            color: #${base0B};
+            border-bottom: 1px solid #${base0B};
         }
         
         #pulseaudio {
-            color: #c678dd;
+            color: #${base0E};
             border-bottom: 1px solid #c678dd;
         }
         
-        #disk {
+        /*#disk {
             color: #${base06};
             border-bottom: 1px solid #${base06};
-        }
+        }*/
 
         #tray {
             background-color: transparent;
@@ -148,13 +154,14 @@ in
             "HDMI-A-1"
         ];
 
-        modules-left = [ "custom/menu" "hyprland/workspaces" ];
+        modules-left = [ "custom/menu" "hyprland/workspaces" "hyprland/window" ];
         modules-center = [ ];
-        modules-right = [ "clock" "cpu" "memory" "temperature" "disk" "pulseaudio" "battery" "network" "tray" "custom/ela" ];
+        modules-right = [ "clock" "pulseaudio" "battery" "network" "tray" "custom/ela" ];
 
         "custom/ela" = {
           format = "ela";
           tooltip = false;
+          on-click = "systemctl suspend";
         };
 
         "custom/menu" = {

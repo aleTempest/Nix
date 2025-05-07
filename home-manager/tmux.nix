@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, config, ... }:
 {
   programs.tmux = {
     enable = true;
@@ -18,12 +18,12 @@
       {
         plugin = tmuxPlugins.onedark-theme;
         extraConfig = ''
-          set -g @plugin 'odedlaz/tmux-onedark-theme'
+          # set -g @plugin 'odedlaz/tmux-onedark-theme'
         '';
       }
     ];
 
-    extraConfig = ''
+    extraConfig = with config.colorScheme.palette; ''
       set -ag terminal-overrides ",$TERM:RGB"
       # Vim style pane selection
       bind h select-pane -L
@@ -52,6 +52,8 @@
       bind -n M-L next-window
 
       bind C-l send-keys 'C-l'
+
+      set -g status-style "fg=#${base07},bg=#${base00}"
     '';
   };
 }
