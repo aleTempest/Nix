@@ -2,6 +2,9 @@
   services.syncthing = {
     enable = true;
     openDefaultPorts = true;
+    user = "ale";
+    dataDir = "/home/ale";
+    configDir = "/home/ale/.config/syncthing";
 
     settings.gui = {
       user = "ale";
@@ -17,5 +20,6 @@
         path = "/home/ale/Pictures";
         devices = [ "POCOM6" ];
       };
+    };
   };
 }
