@@ -18,6 +18,5 @@ pkgs,
     { appId = "com.obsproject.Studio"; origin = "flathub"; }
     { appId = "com.discordapp.Discord"; origin = "flathub"; }
     { appId = "com.valvesoftware.Steam"; origin = "flathub"; }
-    { appId = "com.github.wwmm.easyeffects"; origin = "flathub"; }
   ];
 }

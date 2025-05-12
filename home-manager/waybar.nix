@@ -117,7 +117,7 @@ in
         
         #pulseaudio {
             color: #${base0E};
-            border-bottom: 1px solid #c678dd;
+            border-bottom: 1px solid #${base0E};
         }
         
         /*#disk {

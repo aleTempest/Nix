@@ -23,10 +23,11 @@ let
     '';
   
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
-    hyprctl setcursor Bibata-Modern-Ice 16 & 
+    # hyprctl setcursor Bibata-Modern-Ice 16 & 
     ${pkgs.waybar}/bin/waybar & 
     sleep 1
     ${pkgs.waypaper}/bin/waypaper --restore &
+    blueman-applet &
   '';
 in
 {
@@ -93,6 +94,9 @@ in
       ];
 
       windowrulev2 = [
+
+        "noblur,class:^()$,title:^()$"
+
         "bordersize 0, floating:0, onworkspace:w[t1]"
         "rounding 0, floating:0, onworkspace:w[t1]"
         "bordersize 0, floating:0, onworkspace:w[tg1]"
@@ -189,6 +193,7 @@ in
 
       bind =
         [
+          "$alt, b, exec, chromium --ozone-platform-hint=auto --ozone-platform=wayland"
           # toggle zenMode
           # "$mod, Z, exec, ${zenMode}/bin/zen_mode"
 

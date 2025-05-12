@@ -20,7 +20,7 @@ in
     ./lf.nix
   ];
 
-  colorScheme = inputs.nix-colors.colorSchemes.oxocarbon-dark;
+  colorScheme = inputs.nix-colors.colorSchemes.everforest-dark-hard;
 
   nixpkgs = {
     overlays = [ ];
@@ -48,6 +48,9 @@ in
     spotify
     eza
     wl-clipboard
+    neofetch
+    easyeffects
+    blueman
     mpv
     feh
     grc
