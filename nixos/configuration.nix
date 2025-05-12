@@ -14,6 +14,7 @@
      efiSupport = true;
      device = "nodev";
   };
+
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs" ];
 
@@ -107,6 +108,12 @@
   ];
 
   programs.dconf.enable = true;
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 15d";
+  };
 
   system.stateVersion = "24.11";
 }
