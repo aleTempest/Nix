@@ -13,14 +13,14 @@ in
     inputs.nix-colors.homeManagerModule
     ./alacritty.nix
     ./tmux.nix
-    ./hypr.nix
-    ./waybar.nix
-    ./wofi.nix
-    ./theme.nix
+    # ./hypr.nix
+    # ./waybar.nix
+    # ./wofi.nix
+    # ./theme.nix
     ./lf.nix
   ];
 
-  colorScheme = inputs.nix-colors.colorSchemes.everforest-dark-hard;
+  colorScheme = inputs.nix-colors.colorSchemes.onedark;
 
   nixpkgs = {
     overlays = [ ];
@@ -45,9 +45,12 @@ in
   };
 
   home.packages = with pkgs; [ 
-    spotify
     eza
     wl-clipboard
+    feh
+    obsidian
+    librum
+    zathura
     neofetch
     easyeffects
     blueman

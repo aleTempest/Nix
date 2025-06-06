@@ -15,8 +15,10 @@ pkgs,
   };
 
   services.flatpak.packages = [
-    { appId = "com.obsproject.Studio"; origin = "flathub"; }
+    { appId = "com.spotify.Client"; origin = "flathub"; }
     { appId = "com.discordapp.Discord"; origin = "flathub"; }
+    { appId = "dev.vencord.Vesktop"; origin = "flathub"; }
+    { appId = "com.obsproject.Studio"; origin = "flathub"; }
     { appId = "com.valvesoftware.Steam"; origin = "flathub"; }
   ];
 }

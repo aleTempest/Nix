@@ -23,6 +23,8 @@ let
     '';
   
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
+    # TODO Iniciar discord, steam y navegador.
+    # TODO Asignar cada aplicación a un workspace específico.
     # hyprctl setcursor Bibata-Modern-Ice 16 & 
     ${pkgs.waybar}/bin/waybar & 
     sleep 1
@@ -225,7 +227,8 @@ in
           "$mod, E, exec, $fileManager"
           "$mod, V, togglefloating, "
           "$mod, P, pseudo, # dwindle"
-          "$alt, F, exec, $browser"
+          "$alt, E, exec, nemo"
+          "$alt, W, exec, waypaper"
           "$mod, Q, exec, $term"
         ]
         ++ (

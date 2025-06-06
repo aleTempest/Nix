@@ -5,7 +5,7 @@
     [ 
       ./hardware-configuration.nix
       ./bootloader.nix
-      ./net.nix
+      #./net.nix
       ./lang.nix
       ./services.nix
       ./flatpak.nix
@@ -14,6 +14,24 @@
       ./syncthing.nix
     ];
 
+  # services.xserver.enable = true;
+  # services.displayManager.sddm.enable = true;
+  # services.desktopManager.plasma6.enable = true;
+  services.xserver = {
+    enable = true;
+    desktopManager = {
+      xfce.enable = true;
+    };
+  };
+  services.displayManager.defaultSession = "xfce";
+
+  networking.networkmanager.enable = true;
+
+  # services.xserver = {
+  #   enable = true;
+  #   displayManager.gdm.enable = true;
+  #   desktopManager.gnome.enable = true;
+  # };
 
   # Activar flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
