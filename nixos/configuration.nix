@@ -14,16 +14,10 @@
       ./syncthing.nix
     ];
 
-  # services.xserver.enable = true;
-  # services.displayManager.sddm.enable = true;
-  # services.desktopManager.plasma6.enable = true;
-  services.xserver = {
-    enable = true;
-    desktopManager = {
-      xfce.enable = true;
-    };
-  };
-  services.displayManager.defaultSession = "xfce";
+  services.xserver.enable = true;
+  services.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.xfce.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   networking.networkmanager.enable = true;
 
@@ -55,12 +49,15 @@
     extraGroups = [ "networkmanager" "wheel" "docker"];
     packages = with pkgs; [
       home-manager
+      ani-cli
     ];
   };
 
   fonts.packages = with pkgs; [
     # goated
-    (nerdfonts.override { fonts = [ "FiraCode" "Iosevka" ]; })
+    # (nerdfonts.override { fonts = [ "FiraCode" "Iosevka" ]; })
+    nerd-fonts.fira-code
+    nerd-fonts.iosevka
 
     # Fuentes para japonés, chino
     source-han-sans-japanese

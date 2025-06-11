@@ -20,7 +20,7 @@ in
     ./lf.nix
   ];
 
-  colorScheme = inputs.nix-colors.colorSchemes.onedark;
+  colorScheme = inputs.nix-colors.colorSchemes.nord;
 
   nixpkgs = {
     overlays = [ ];
