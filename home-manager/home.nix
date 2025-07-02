@@ -73,11 +73,10 @@ in
     bluez-tools
     chromium
 
-    cinnamon.nemo-with-extensions
-    xfce.thunar
-    xfce.thunar-archive-plugin
-    xfce.thunar-volman
-    xfce.thunar-media-tags-plugin
+    # xfce.thunar
+    # xfce.thunar-archive-plugin
+    # xfce.thunar-volman
+    # xfce.thunar-media-tags-plugin
   ];
 
   programs.home-manager.enable = true;

@@ -10,26 +10,19 @@
       ./services.nix
       ./flatpak.nix
       ./shell.nix
-      ./kdeconnect.nix
+      ./plasma6.nix
       ./syncthing.nix
     ];
 
-  services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
+  # como alternativa esta otro manager que maneja las redes de manera 
+  # declarativa
   networking.networkmanager.enable = true;
-
-  # services.xserver = {
-  #   enable = true;
-  #   displayManager.gdm.enable = true;
-  #   desktopManager.gnome.enable = true;
-  # };
 
   # Activar flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  hardware.opentabletdriver.enable = true;
+  hardware.opentabletdriver.daemon.enable = true;
   hardware.pulseaudio.enable = false;
 
   security.rtkit.enable = true;
@@ -73,6 +66,8 @@
 
     # emojis
     noto-fonts-emoji
+
+    inter
   ];
 
   programs.dconf.enable = true;
