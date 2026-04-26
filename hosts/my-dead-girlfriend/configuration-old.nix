@@ -21,9 +21,6 @@
   # declarativa
   networking.networkmanager.enable = true;
 
-  # Activar flakes
-
-
   hardware.opentabletdriver.enable = true;
   hardware.opentabletdriver.daemon.enable = true;
   hardware.pulseaudio.enable = false;
