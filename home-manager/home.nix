@@ -3,8 +3,10 @@
   lib,
   config,
   pkgs,
+  pkgs-unstable,
+  plasma-manager,
   ...
-}: 
+}:
 let
   system = "x86_64-linux";
 in
@@ -44,7 +46,16 @@ in
     };
   };
 
-  home.packages = with pkgs; [ 
+  home.packages =
+  (with pkgs; [
+    plasma-panel-colorizer
+    kara
+    obs-studio
+    kdePackages.kpmcore
+    kdePackages.partitionmanager
+    spotify
+    zed-editor
+    vesktop
     eza
     wl-clipboard
     feh
@@ -77,14 +88,18 @@ in
     # xfce.thunar-archive-plugin
     # xfce.thunar-volman
     # xfce.thunar-media-tags-plugin
-  ];
+  ])
+  ++
+  (with pkgs-unstable; [
+    klassy
+  ]);
 
   programs.home-manager.enable = true;
 
   programs.git = {
     enable = true;
-    userName  = "ale";
-    userEmail = "ale.edgedancer@gmail.com";
+    settings.user.name  = "ale";
+    settings.user.email = "ale.edgedancer@gmail.com";
   };
 
   programs.fish = {
@@ -106,5 +121,5 @@ in
     ];
   };
 
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.11";
 }
