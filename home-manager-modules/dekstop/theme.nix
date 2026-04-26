@@ -1,7 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
+  colorScheme = inputs.nix-colors.colorSchemes.nord;
   gtk = {
-    enable = true;
+    enable = false;
     theme = {
       package = pkgs.fluent-gtk-theme;
       name = "Fluent-Dark";
