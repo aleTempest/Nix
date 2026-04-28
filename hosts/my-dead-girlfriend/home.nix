@@ -6,6 +6,12 @@
 }:
 let
   system = "x86_64-linux";
+  mkNixpkgs =
+    input: system:
+    import input {
+      inherit system;
+      config.allowUnfree = true;
+    };
 in
 {
   imports = [ ./home-manager-imports.nix ];
@@ -34,6 +40,8 @@ in
 
   home.packages =
   (with pkgs; [
+    lutris
+    bottles
     plasma-panel-colorizer
     kara
     obs-studio
@@ -69,6 +77,7 @@ in
     inputs.zen-browser.packages."${system}".beta
     bluez-tools
     chromium
+    droidcam
   ]);
     # ++
     # (with inputs.nixpkgs-unstable; [
