@@ -10,5 +10,7 @@
   };
   config.flake.variables = {
     username = "ale";
+    font-editor = "Lilex Nerd Font";
+    font-size = "14";
   };
 }
