@@ -9,14 +9,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-colors.url = "github:misterio77/nix-colors";
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
-    niri = {
-      url = "github:myume/niri-flake/blur";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-      inputs.nixpkgs-stable.follows = "nixpkgs";
-      inputs.niri-unstable.url = "github:YaLTeR/niri";
-    };
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
 
@@ -25,6 +19,29 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+
+    terminal-rain.url = "github:delta-psi/terminal-rain-lightning-flake";
+
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland"; 
+
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+
+    hyprlock = {
+      url = "github:hyprwm/hyprlock/";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hypridle = {
+      url = "github:hyprwm/hypridle/";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprcursor-phinger.url = "github:jappie3/hyprcursor-phinger";
   };
 
   outputs =

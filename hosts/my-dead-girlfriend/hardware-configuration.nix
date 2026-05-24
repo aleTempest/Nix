@@ -1,15 +1,26 @@
-{ config, inputs, lib, pkgs, modulesPath, ... }:
+{ 
+  config,
+  inputs,
+  lib,
+  pkgs,
+  modulesPath,
+  ... 
+}:
 
 {
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
-      #inputs.nixos-hardware.nixosModules.common-gpu-nvidia
     ];
-
+  nixpkgs.overlays = [ inputs.nix-cachyos-kernel.overlays.pinned ];
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts;
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  boot.kernelModules = [ "kvm-amd" "v4l2loopback " ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+  boot.extraModprobeConfig = ''
+    options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+  '';
+  security.polkit.enable = true;
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/b1d207ba-fd61-4bc4-b41c-77ae8b5d8bc2";

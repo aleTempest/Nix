@@ -7,8 +7,7 @@
     enable = true;
     themes = {
       catppuccin-mocha = {
-        background = "222436";
-        # background = "${config.colorScheme.palette.base02}";
+        background = "${config.colorScheme.palette.base00}";
         cursor-color = "${config.colorScheme.palette.base07}";
         foreground = "cdd6f4";
         palette = with config.colorScheme.palette; [

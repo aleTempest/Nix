@@ -21,125 +21,96 @@ in
     enable = true;
 
     style = with config.colorScheme.palette; ''
-        * {
-          font-family: Rubik;
-          font-size: 13px;
-          min-height: 0;
-        }
+    #backlight, #battery, #cpu, #disk, #idle_inhibitor, #keyboard-state,
+    #pulseaudio, #clock, #tags, #language, #memory, #network, #sndio,
+    #mode, #window, #workspaces, #temperature, #taskbar, #workspaces,
+    * {
+      font-family: "Lilex Nerd Font";
+      font-size: 17px;
+    }
 
-        window#waybar {
-          background: #${base00};
-        }
+    window#waybar { 
+      background-color: #${base09}; 
+      color: #${base00};
+      font-size: 12px;
+    }
 
-        #workspaces button {
-            padding: 0 10px;
-            background-color: transparent;
-            color: #${base07};
-            margin: 0;
-        }
-        
-        #workspaces button:hover {
-            background: #${base0A};
-            color: #${base00};
-            box-shadow: inherit;
-        }
-        
-        /*#workspaces button.focused {
-            background: #${base09};
-            color: #${base08};
-        }*/
+    .modules-left {
+      background-color: #${base00}; 
+      color: #${base09};
+    }
+    
+    .modules-center {
+      background-color: #${base09};
+      color: #${base00};
+    }
+    
+    .modules-right {
+      background-color: #${base00}; 
+      color: #${base09};
+    } 
+    
+    #workspaces {
+      font-size: 20px;
+      border-radius: 0px;
+    }
+    
+    #workspaces button {
+      font-size: 13px;
+      padding: 0px 8px 0px 8px; 
+      min-width: 1px;
+      border-radius: 0px;
+    }
+    
+    #workspaces button.empty {
+      color: #${base09};
+    }
+    
+    #workspaces button.visible {
+      font-size: 20px;
+      padding: 0px 8px 0px 8px; 
+      min-width: 1px;
+      color: #ea6962;
+    }
+    
+    #workspaces button.focused { 
+      font-size: 20px;
+      padding: 0px 8px 0px 8px; 
+      padding: 0px 8px 0px 8px; 
+      background-color: #${base09}; 
+      color: #${base00};    
+    }
+    
+    #workspaces button.active {
+      font-size: 20px;
+      padding: 0px 8px 0px 8px; 
+      background-color: #${base09}; 
+      color: #${base00};    
+    }
 
-        #workspaces button.active {
-            font-weight: 400;
-            background: #${base09};
-            color: #${base01};
-        }
-        
-        #workspaces button.urgent {
-            background-color: #${base0F};
-            color: #${base01};
-        }
-     
-        .modules-right,
-        .modules-center,
-        .modules-left {
-          background: #${base00};
-          padding: 5px;
-        }
+    #custom-nowplaying,#window {
+      font-size: 18px;
+      color: #${base00};
+      background-color: #${base09};
+      padding: 0px 10px 0px 10px;
+    }
+    
+    
+    window#waybar.empty #window {
+      font-size: 13px;
+      background-color: transparent;
+      color: transparent;
+    }
+    
+    
+    window#waybar.empty {
+      font-size: 13px;
+      background-color: #${base00};
+    }
 
-        #window {
-          color: #${base06};
-          padding-left: 5px;
-        }
-
-        #clock,
-        #cpu,
-        #memory,
-        #temperature,
-        #battery,
-        #network,
-        #pulseaudio,
-        #disk,
-        #tray {
-          margin-left: 8px;
-        }
-
-        #clock {
-            color: #${base09};
-            border-bottom: 1px solid #${base09};
-        }
-        
-        /*#cpu {
-            color: #${base0C};
-            border-bottom: 1px solid #${base0C};
-        }
-        
-        #memory {
-            color: #${base0B};
-            border-bottom: 1px solid #${base0B};
-        }
-        
-        #temperature {
-            color: #${base0A};
-            border-bottom: 1px solid #${base0A};
-        }*/
-
-        /* TODO: estados */
-        #battery {
-            color: #${base0C};
-            border-bottom: 1px solid #${base0C};
-        }
-        
-        #network {
-            color: #${base0B};
-            border-bottom: 1px solid #${base0B};
-        }
-        
-        #pulseaudio {
-            color: #${base0E};
-            border-bottom: 1px solid #${base0E};
-        }
-        
-        /*#disk {
-            color: #${base06};
-            border-bottom: 1px solid #${base06};
-        }*/
-
-        #tray {
-            background-color: transparent;
-            padding: 0 10px;
-            margin: 0 2px;
-        }
-        
-        #tray > .passive {
-            -gtk-icon-effect: dim;
-        }
-        
-        #tray > .needs-attention {
-            -gtk-icon-effect: highlight;
-            color: @red;
-            border-bottom: 1px solid @red;
-        }
+    #custom-ela {
+      padding-left: 2px;
+    }
 
     '';
 
@@ -150,13 +121,13 @@ in
         height = 10;
 
         output = [
-          "eDP-1"
-            "HDMI-A-1"
+          "DP-1"
+          "HDMI-A-1"
         ];
 
-        modules-left = [ "custom/menu" "hyprland/workspaces" "hyprland/window" ];
+        modules-left = [ "hyprland/workspaces" "hyprland/window" ];
         modules-center = [ ];
-        modules-right = [ "clock" "pulseaudio" "battery" "network" "tray" "custom/ela" ];
+        modules-right = [ "clock" "tray" "custom/ela" ];
 
         "custom/ela" = {
           format = "ela";
@@ -195,8 +166,8 @@ in
             "10" = "10";
           };
           persistent-workspaces = {
-            "HDMI-A-1" = [ 1 2 3 4 5 6 7 8 ];
-            "eDP-1" = [ 9 10 ];
+            "DP-1" =  [ 1 2 3 4 5 6 7 8 ];
+            "HDMI-A-1" = [ 9 10 ];
           };
         };
 

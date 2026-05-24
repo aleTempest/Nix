@@ -6,12 +6,6 @@
 }:
 let
   system = "x86_64-linux";
-  mkNixpkgs =
-    input: system:
-    import input {
-      inherit system;
-      config.allowUnfree = true;
-    };
 in
 {
   imports = [ ./home-manager-imports.nix ];
@@ -33,18 +27,19 @@ in
       sail = "sh $([ -f sail ] && echo sail || echo vendor/bin/sail)";
       nd = "nix develop";
       nr = "nix run";
-      vi = "nix run ~/flakes/nixvim";
+      vi = "nix run ~/Nixvim";
       home = "cd ~/ela && vi";
     };
   };
 
   home.packages =
   (with pkgs; [
+    inputs.terminal-rain.packages.${stdenv.hostPlatform.system}.terminal-rain-lightning
+    blender
     lutris
     bottles
     plasma-panel-colorizer
     kara
-    obs-studio
     kdePackages.kpmcore
     kdePackages.partitionmanager
     spotify
@@ -77,7 +72,7 @@ in
     inputs.zen-browser.packages."${system}".beta
     bluez-tools
     chromium
-    droidcam
+    discord
   ]);
     # ++
     # (with inputs.nixpkgs-unstable; [

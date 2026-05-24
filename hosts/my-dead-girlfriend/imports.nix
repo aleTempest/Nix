@@ -6,9 +6,10 @@
     ../../modules/system/bootloader.nix
 
     # TODO: arreglar xdg-portal
-    # ../../modules/programs/flatpak.nix
+    ../../modules/programs/flatpak.nix
     ../../modules/programs/syncthing.nix
 
     ../../modules/desktop/plasma6.nix
+    ../../modules/desktop/dwm.nix
   ];
 }

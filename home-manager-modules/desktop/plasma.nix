@@ -8,14 +8,24 @@
   ];
   programs.plasma = {
     enable = true;
+    # workspace = {
+    #   cursor.theme = "Bibata-Modern-Ice";
+    #   iconTheme = "Kora-Dark";
+    # };
     panels = [
       {
-        alignment = "center";
-        height = 30;
+        alignment = "left";
+        height = 50;
         lengthMode = "fill";
-        location = "top";
+        location = "left";
         opacity = "translucent";
         widgets = [
+          {
+            name = "AndromedaLauncher";
+            config = {
+              launcherPosition = 3;
+            };
+          }
           {
             name = "org.dhruv8sh.kara";
             config = {
@@ -31,21 +41,10 @@
               };
             };
           }
+          "org.kde.plasma.icontasks"
           {
             panelSpacer = {
               expanding = true;
-            };
-          }
-          {
-            name = "org.kde.plasma.digitalclock";
-            config = {
-              Appearance = {
-                autoFontAndSize = true;
-                customDateFormat = "ddd, MMM dd";
-                dateDisplayFormat = "BesideTime";
-                dateFormat = "custom";
-                use24hFormat = 2;
-              };
             };
           }
           {
@@ -62,19 +61,32 @@
                   "org.kde.plasma.keyboardlayout"
                   "org.kde.plasma.networkmanagement"
                   "org.kde.plasma.volume"
-                ];
-                hidden = [
-                  "org.kde.plasma.battery"
-                  "org.kde.plasma.brightness"
                   "org.kde.plasma.clipboard"
-                  "org.kde.plasma.devicenotifier"
                   "org.kde.plasma.mediacontroller"
                   "plasmashell_microphone"
                   "xdg-desktop-portal-kde"
                 ];
+                hidden = [
+                  "org.kde.plasma.battery"
+                  "org.kde.plasma.brightness"
+                  "org.kde.plasma.devicenotifier"
+                ];
               };
             };
           }
+          {
+            name = "org.kde.plasma.digitalclock";
+            config = {
+              Appearance = {
+                autoFontAndSize = true;
+                customDateFormat = "ddd, MMM dd";
+                dateDisplayFormat = "BesideTime";
+                dateFormat = "custom";
+                use24hFormat = 2;
+              };
+            };
+          }
+
         ];
       }
     ];

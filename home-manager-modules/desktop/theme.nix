@@ -1,6 +1,6 @@
 { pkgs, inputs, ... }:
 {
-  colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-dark;
+  colorScheme = inputs.nix-colors.colorSchemes.oxocarbon-dark;
   gtk = {
     enable = false;
     theme = {

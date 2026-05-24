@@ -1,6 +1,5 @@
 { 
   pkgs,
-  lib,
   config,
   inputs,
   ... 
@@ -49,7 +48,7 @@ in
 
   home.packages = with pkgs; [
     wofi
-    rofi-wayland
+    rofi
     hyprlock
     swaybg
     waypaper
@@ -73,14 +72,13 @@ in
       env = "XCURSOR_SIZE, 24";
 
       monitor = [
-        "HDMI-A-1,preferred,1920x0,auto"
-        "eDP-1,1920x1080,0x370,1"
+        "DP-1,2560x1080@99,0x0,1"
+        "HDMI-A-1,1920x1080@60,2560x0,1"
       ];
 
       workspace = [
-        "9,monitor:eDP-1"
-        "10,monitor:eDP-1"
-
+        # "9,monitor:HDMI-A-1"
+        # "10,monitor:HDMI-A-1"
         # smart gaps, por alguna razón quitaron `no_gaps_when_only` de dwindle
         "w[t1], gapsout:0, gapsin:0"
         "w[tg1], gapsout:0, gapsin:0"
@@ -88,7 +86,7 @@ in
       ];
 
       windowrule = [
-        "noblur,tittle:Picture in Picture"
+        # "noblur,tittle:Picture in Picture"
         "noshadow,class:Chromium-browser"
         "noblur,class:Chromium-browser"
         "noblur,class:Xdg-desktop-portal-gtk"
@@ -130,16 +128,12 @@ in
         };
       };
 
-      gestures = {
-        workspace_swipe = "on";
-      };
-
       general = {
         gaps_in = 0;
         gaps_out = 0;
-        border_size = 3;
+        border_size = 1;
         "col.inactive_border" = "rgba(00000000)";
-        "col.active_border" = "rgba(${config.colorScheme.palette.base07}ee)";
+        "col.active_border" = "rgba(${config.colorScheme.palette.base09}ee)";
       };
 
       decoration = {
@@ -178,9 +172,9 @@ in
 
       "$mod" = "SUPER";
       "$alt" = "Mod1";
-      "$term" = "alacritty";
-      "$browser" = "floorp";
-      "$menu" = "wofi --show drun";
+      "$term" = "ghostty";
+      "$browser" = "zen-beta";
+      "$menu" = "rofi -show drun";
 
       bindm = [
         "$mod, mouse:272, movewindow"

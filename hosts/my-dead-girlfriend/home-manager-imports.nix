@@ -7,6 +7,8 @@
     inputs.nix-colors.homeManagerModule
     ../../home-manager-modules/desktop/theme.nix
     ../../home-manager-modules/desktop/plasma.nix
+    ../../home-manager-modules/desktop/hypr.nix
+    ../../home-manager-modules/desktop/waybar.nix
 
     ../../home-manager-modules/programs/ghostty.nix
     ../../home-manager-modules/programs/lf.nix
