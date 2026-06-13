@@ -12,13 +12,13 @@
     };
 
     devices = {
-      "POCOM6" = { id = "T5SWMAT-3VP52UE-WKFNP3O-3OBJ5VD-6AEOG56-VQR4LCR-XD5HHRD-2NARIQY"; };
+      "moto" = { id = "MQ3YMYD-AGDH643-PIUG77N-MGSOPVS-J5R7CST-36RMZ47-26B7V2H-ETZC2QD"; };
     };
 
     folders = {
-      "Pictures" = {
-        path = "/home/ale/Pictures";
-        devices = [ "POCOM6" ];
+      "cia" = {
+        path = "/home/ale/Desktop/cia";
+        devices = [ "moto" ];
       };
     };
   };

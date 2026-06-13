@@ -10,6 +10,5 @@
     ../../modules/programs/syncthing.nix
 
     ../../modules/desktop/plasma6.nix
-    ../../modules/desktop/dwm.nix
   ];
 }
