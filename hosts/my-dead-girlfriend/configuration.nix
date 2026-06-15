@@ -19,6 +19,11 @@
   environment.systemPackages = with pkgs; [
       vim
       git
+      wl-clipboard
+      ntfs3g  
+      vulkan-tools
+      vulkan-loader
+      mesa-demos
   ];
 
   users.users.${username} = {
@@ -34,17 +39,11 @@
   programs.steam.enable = true;
 
   fonts.packages = with pkgs; [
-    v4l-utils
-    wl-clipboard
-    ntfs3g  
-    vulkan-tools
-    vulkan-loader
-    mesa-demos
-    # goated
     # (nerdfonts.override { fonts = [ "FiraCode" "Iosevka" ]; })
     nerd-fonts.fira-code
     nerd-fonts.iosevka
     nerd-fonts.lilex
+    nerd-fonts.envy-code-r
 
     # Fuentes para japonés, chino
     # source-han-sans-japanese
@@ -64,6 +63,7 @@
     #noto-fonts-emoji
 
     inter
+    reaper
   ];
 
   programs.dconf.enable = true;
@@ -79,5 +79,5 @@
 
   virtualisation.docker.enable = true;
 
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
 }

@@ -1,11 +1,11 @@
 {
   description = "ela";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-colors.url = "github:misterio77/nix-colors";
@@ -24,25 +24,8 @@
 
     terminal-rain.url = "github:delta-psi/terminal-rain-lightning-flake";
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland"; 
-
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-
-    hyprlock = {
-      url = "github:hyprwm/hyprlock/";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hypridle = {
-      url = "github:hyprwm/hypridle/";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hyprcursor-phinger.url = "github:jappie3/hyprcursor-phinger";
-  };
+    wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
+};
 
   outputs =
     inputs:

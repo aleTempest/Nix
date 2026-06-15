@@ -27,7 +27,7 @@ in
       sail = "sh $([ -f sail ] && echo sail || echo vendor/bin/sail)";
       nd = "nix develop";
       nr = "nix run";
-      vi = "nix run ~/Nixvim";
+      vi = "~/Nixvim/result/bin/nvim";
       home = "cd ~/ela && vi";
     };
   };
@@ -36,8 +36,6 @@ in
   (with pkgs; [
     inputs.terminal-rain.packages.${stdenv.hostPlatform.system}.terminal-rain-lightning
     blender
-    lutris
-    bottles
     plasma-panel-colorizer
     kara
     kdePackages.kpmcore
@@ -51,7 +49,6 @@ in
     obsidian
     librum
     zathura
-    neofetch
     easyeffects
     blueman
     mpv
@@ -60,19 +57,14 @@ in
     vscode
     tauon
     nix-search-cli
-    duckstation
     btop
-    brave
     prismlauncher
     qbittorrent
     unzip
     zip
-    brightnessctl
-    pavucontrol
     inputs.zen-browser.packages."${system}".beta
-    bluez-tools
-    chromium
     discord
+    proton-vpn
   ]);
     # ++
     # (with inputs.nixpkgs-unstable; [
@@ -81,5 +73,5 @@ in
 
   programs.home-manager.enable = true;
 
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.05";
 }

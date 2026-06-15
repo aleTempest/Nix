@@ -34,7 +34,8 @@
     };
     settings = {
       theme = "catppuccin-mocha";
-      font-size = 14;
+      font-family = "EnvyCodeR Nerd Font";
+      font-size = 15;
     };
   };
 }

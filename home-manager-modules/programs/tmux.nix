@@ -15,12 +15,6 @@
       tmuxPlugins.sensible
       tmuxPlugins.vim-tmux-navigator
       tmuxPlugins.yank
-      {
-        plugin = tmuxPlugins.onedark-theme;
-        extraConfig = ''
-          # set -g @plugin 'odedlaz/tmux-onedark-theme'
-        '';
-      }
     ];
 
     extraConfig = with config.colorScheme.palette; ''
