@@ -9,7 +9,8 @@
     ../../modules/programs/flatpak.nix
     ../../modules/programs/syncthing.nix
 
-    ../../modules/desktop/plasma6.nix
+    # ../../modules/desktop/plasma6.nix
     # ../../modules/desktop/niri.nix
+    ../../modules/desktop/gnome.nix
   ];
 }

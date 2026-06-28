@@ -13,5 +13,6 @@
     ../../home-manager-modules/programs/tmux.nix
     ../../home-manager-modules/programs/git.nix
     ../../home-manager-modules/programs/fish.nix
+    
   ];
 }

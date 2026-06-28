@@ -1,21 +1,24 @@
 { pkgs, inputs, ... }:
+let
+  mogaPurple = import ../../derivations/moga.nix { inherit pkgs; };
+in
 {
   colorScheme = inputs.nix-colors.colorSchemes.oxocarbon-dark;
+
+  home.pointerCursor =  {
+    enable = true;
+    gtk.enable = true;
+    x11.enable = true;
+    name = "Moga-Purple";
+    package = mogaPurple;
+  };
+
   gtk = {
-    enable = false;
-    theme = {
-      package = pkgs.fluent-gtk-theme;
-      name = "Fluent-Dark";
-    };
+    enable = true;
 
     iconTheme = {
-      package = pkgs.fluent-icon-theme;
-      name = "Fluent-dark";
-    };
-
-    font = {
-      name = "Sans";
-      size = 11;
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
     };
   };
 }

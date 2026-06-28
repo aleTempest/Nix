@@ -50,7 +50,6 @@ in
     librum
     zathura
     easyeffects
-    blueman
     mpv
     feh
     grc
@@ -64,7 +63,10 @@ in
     zip
     inputs.zen-browser.packages."${system}".beta
     discord
-    proton-vpn
+    osu-lazer
+    opentabletdriver
+    gnome-tweaks
+    nautilus
   ]);
     # ++
     # (with inputs.nixpkgs-unstable; [
