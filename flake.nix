@@ -25,6 +25,8 @@
     terminal-rain.url = "github:delta-psi/terminal-rain-lightning-flake";
 
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
+
+    moga-purple-cursors.url = "git+https://codeberg.org/ale_default/Moga-Purple-Flake";
 };
 
   outputs =

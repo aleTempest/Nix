@@ -67,6 +67,7 @@ in
     opentabletdriver
     gnome-tweaks
     nautilus
+    mullvad-vpn
   ]);
     # ++
     # (with inputs.nixpkgs-unstable; [

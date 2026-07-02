@@ -68,9 +68,6 @@
 
   programs.dconf.enable = true;
 
-  programs.obs-studio.enable = true;
-  programs.obs-studio.enableVirtualCamera = true;
-
   nix.gc = {
     automatic = true;
     dates = "weekly";

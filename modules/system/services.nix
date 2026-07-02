@@ -1,7 +1,6 @@
 {
   # Auto login en la TTY
   services.getty.autologinUser = "ale";
-  services.printing.enable = false;
 
   # Sonido
   services.pipewire = {

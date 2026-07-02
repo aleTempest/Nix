@@ -8,6 +8,7 @@
     # TODO: arreglar xdg-portal
     ../../modules/programs/flatpak.nix
     ../../modules/programs/syncthing.nix
+    ../../modules/programs/mullvad.nix
 
     # ../../modules/desktop/plasma6.nix
     # ../../modules/desktop/niri.nix
